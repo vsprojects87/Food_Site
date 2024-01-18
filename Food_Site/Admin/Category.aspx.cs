@@ -29,7 +29,7 @@ namespace Food_Site.Admin
             int CategoryId = Convert.ToInt32(hdnId.Value);
             con = new SqlConnection(Connection.GetConnectionString());
             cmd= new SqlCommand("Category_Crud", con);
-            cmd.Parameters.AddWithValue("@Action", CategoryId = 0 ? "INSERT" : "UPDATE");
+            cmd.Parameters.AddWithValue("@Action", CategoryId == 0 ? "INSERT" : "UPDATE");
             cmd.Parameters.AddWithValue("@CategoryId", CategoryId);
             cmd.Parameters.AddWithValue("@Name",txtName.Text.Trim());
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
@@ -68,7 +68,7 @@ namespace Food_Site.Admin
                     lblMsg.Visible = true;
                     lblMsg.Text = "Category" + actioName + "successfully";
                     lblMsg.CssClass = "alert alert-danger";
-                    getCategories();
+                    //getCategories();
                     clear();
                 }
                 catch(Exception ex)
@@ -82,38 +82,14 @@ namespace Food_Site.Admin
                     con.Close();
                 } 
             }
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        private void clear()
+        {
+            txtName.Text = string.Empty;
+            cbIsActive.Checked = false;
+            hdnId.Value = "0";
+            btnAddOrUpdate.Text = "Add";
         }
     }
 }
