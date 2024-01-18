@@ -7,7 +7,7 @@
             var seconds = 5;
             setTimeout(function () {
                 document.getElementById("<%=lblMsg.ClientID%>").style.display = "none";
-            }, seconds + 1000); 
+            }, seconds + 1000);
         };
     </script>
     <script>
@@ -72,18 +72,48 @@
                                                 </div>
 
                                                 <div class="pb-5">
-                                                    <asp:Button ID="btnAddOrUpdate" runat="server" Text="Add" CssClass="btn btn-primary" 
-                                                        Onclick="btnAddOrUpdate_Click"/>
+                                                    <asp:Button ID="btnAddOrUpdate" runat="server" Text="Add" CssClass="btn btn-primary"
+                                                        OnClick="btnAddOrUpdate_Click" />
                                                     &nbsp;
-                                                    <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-primary" CausesVAlidation="false" onclick="btnClear_Click"/>
+                                                    <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-primary" CausesValidation="false" OnClick="btnClear_Click" />
                                                 </div>
 
                                                 <div>
                                                     <asp:Image ID="imgCategory" runat="server" CssClass="img-thumbnail" />
                                                 </div>
-
                                             </div>
                                         </div>
+
+
+                                        <div class="col-sm-6 col-md-8 col-lg-8 mobile-inputs">
+                                            <h4 class="sub-title">Category</h4>
+                                            <div class="card-block table-border-style">
+                                                <div class="table-responsive">
+                                                    <asp:Repeater ID="rCategpry" runat="server">
+                                                        <HeaderTemplate>
+                                                            <table>
+                                                                <tr>
+                                                                    <th>Name</th>
+                                                                    <th>Image</th>
+                                                                    <th>IsActive</th>
+                                                                    <th>CreatedDate</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </table>
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <td><%#Eval("Name") %></td>
+                                                            <td><%#Eval("ImageUrl") %></td>
+                                                            <td><%#Eval("IsActive") %></td>
+                                                            <td><%#Eval("CreateDate") %></td>
+                                                            <td></td>
+                                                        </ItemTemplate>
+                                                    </asp:Repeater>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>

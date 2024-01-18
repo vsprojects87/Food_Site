@@ -18,7 +18,12 @@ namespace Food_Site.Admin
         DataTable dt;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                Session["breadCrum"] = "Category";
+                getCategories();
+            }
+            lblMsg.Visible= false;
         }
 
         protected void btnAddOrUpdate_Click(object sender, EventArgs e)
@@ -94,7 +99,7 @@ namespace Food_Site.Admin
             dt =new DataTable();
             sda.Fill(dt);
             rCategpry.DataSource = dt;
-            rCategpry.Databind();
+            rCategpry.DataBind();
 
         }
 
@@ -108,6 +113,10 @@ namespace Food_Site.Admin
 
         protected void btnClear_Click(object sender, EventArgs e)
         {
+            txtName.Text = string.Empty;
+            cbIsActive.Checked = false;
+            hdnId.Value = "0";
+            btnAddOrUpdate.Text = "Add";
             clear();
         }
     }
