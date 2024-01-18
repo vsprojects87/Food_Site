@@ -19,7 +19,7 @@
                         .width(200)
                         .height(200);
                 };
-                raeder.readAsDataURL(input.files[0]);
+                reader.readAsDataURL(input.files[0]);
             }
         }
     </script>
@@ -72,10 +72,10 @@
                                                 </div>
 
                                                 <div class="pb-5">
-                                                    <asp:Button ID="btnAddOrUpdate" runat="server" Text="Clear" CssClass="btn btn-primary" 
+                                                    <asp:Button ID="btnAddOrUpdate" runat="server" Text="Add" CssClass="btn btn-primary" 
                                                         Onclick="btnAddOrUpdate_Click"/>
                                                     &nbsp;
-                                                    <asp:Button ID="btnClear" runat="server" Text="Add" CssClass="btn btn-primary" CausesVAlidation="false" />
+                                                    <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-primary" CausesVAlidation="false" onclick="btnClear_Click"/>
                                                 </div>
 
                                                 <div>

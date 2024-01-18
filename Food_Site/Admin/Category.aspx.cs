@@ -68,7 +68,7 @@ namespace Food_Site.Admin
                     lblMsg.Visible = true;
                     lblMsg.Text = "Category" + actioName + "successfully";
                     lblMsg.CssClass = "alert alert-danger";
-                    //getCategories();
+                    getCategories();
                     clear();
                 }
                 catch(Exception ex)
@@ -84,12 +84,31 @@ namespace Food_Site.Admin
             }
         }
 
+        private void getCategories()
+        {
+            con = new SqlConnection(Connection.GetConnectionString());
+            cmd = new SqlCommand("Category_Crud", con);
+            cmd.Parameters.AddWithValue("@Action", "SELECT");
+            cmd.CommandType = CommandType.StoredProcedure;
+            sda = new SqlDataAdapter(cmd);
+            dt =new DataTable();
+            sda.Fill(dt);
+            rCategpry.DataSource = dt;
+            rCategpry.Databind();
+
+        }
+
         private void clear()
         {
             txtName.Text = string.Empty;
             cbIsActive.Checked = false;
             hdnId.Value = "0";
             btnAddOrUpdate.Text = "Add";
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            clear();
         }
     }
 }
